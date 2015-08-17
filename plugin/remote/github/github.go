@@ -254,9 +254,8 @@ func (r *GitHub) ParseHook(req *http.Request) (*model.Hook, error) {
 	}
 
 	// make sure this is being triggered because of a commit
-	// and not something like a tag deletion or whatever
-	if data.IsTag() ||
-		data.IsGithubPages() ||
+	// and not something like a deletion or whatever
+	if data.IsGithubPages() ||
 		data.IsHead() == false ||
 		data.IsDeleted() {
 		return nil, nil
